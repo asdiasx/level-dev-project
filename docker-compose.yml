@@ -2,6 +2,7 @@ version: '3.3'
 services:
   web:
     build: .
+    container_name: tcc-web
     ports:
       - '3000:3000'
     volumes:
@@ -12,9 +13,18 @@ services:
     build:
       context: .
       dockerfile: Dockerfile.ts
+    container_name: tcc-client
     ports:
-      - "8080:8080"
+      - '8080:8080'
     volumes:
       - ./client:/usr/src/client
+  redis:
+    image: redis:alpine
+    container_name: tcc-redis-cache
+    ports:
+      - '6379:6379'
+    volumes:
+      - redis:/data
 volumes:
   bundle:
+  redis:
