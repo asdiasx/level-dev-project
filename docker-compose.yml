@@ -18,6 +18,7 @@ services:
       - '8080:8080'
     volumes:
       - ./client:/usr/src/client
+    command: yarn dev
   redis:
     image: redis:alpine
     container_name: tcc-redis-cache
