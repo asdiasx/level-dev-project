@@ -1,12 +1,23 @@
 ARG RUBY_VERSION=3.2.0
 FROM ruby:$RUBY_VERSION
 
-RUN apt-get update -qq && apt-get install -y \
+RUN apt -y update -qq && apt install -y \
   apt-utils \
   build-essential \
-  default-libmysqlclient-dev
+  default-libmysqlclient-dev \
+  curl \
+  npm
+
+
+run curl -SLO https://deb.nodesource.com/nsolid_setup_deb.sh
+run chmod 500 nsolid_setup_deb.sh
+run ./nsolid_setup_deb.sh 18
+run apt install nodejs -y
+
 
 RUN git config --global init.defaultBranch main
+
+RUN npm -g install yarn
 
 RUN gem update --system
 RUN gem install bundler
