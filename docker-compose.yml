@@ -21,9 +21,11 @@ services:
     command: yarn dev
   redis:
     image: redis:alpine
-    container_name: tcc-redis-cache
+    container_name: tcc-redis
     ports:
       - '6379:6379'
+    environment:
+      REDIS_URL: 'redis://redis:6379/0'
     volumes:
       - redis:/data
   redisinsight:
