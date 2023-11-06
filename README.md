@@ -54,9 +54,39 @@ O monitor de filas do Redis (RedisInsight) estará disponível em http://localho
         - port: 6379
         - name: tcc-redis-insight
 
+## Rotas - API
+
+- listar posts:
+	- http://localhost:3000/posts - 200
+- novo post:
+	- http://localhost:3000/posts/ (POST + payload) - post with id
+- edit post:
+	- http://localhost:3000/posts/3 (PUT + payload) - post with id
+- destroy post:
+	- http://localhost:3000/posts/3 (DELETE) - 204 - none
+- show post:
+- http://localhost:3000/posts/2 - post with id
+- create comments:
+	- http://localhost:3000/posts/1/comments - (POST + payload) - comment detail
+- edit comments:
+	- http://localhost:3000/posts/1/comments/22 - (PUT + payload) - comment detail
+- delete comments:
+	- http://localhost:3000/posts/2/comments/78 - (DELETE) - 204 - none
+- notifications:
+	- http://localhost:3000/notifications - 200
+- delete notification:
+	- http://localhost:3000/notifications/11 - (DELETE) - 204 - none
+- about
+	- http://localhost:3000/about - 200
+
+
 ## Utilização
 
 O uso é bem simples, basta criar um usuário e começar a criar artigos e comentários.
+
+### Diagrama do client
+
+![Diagrama do Client](image/client_layout.png)
 
 ## Repositórios
 
